@@ -2,8 +2,15 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include <chrono>
 #include <wpi/raw_ostream.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <iostream>
 
 TigerVision::TigerVision(int imageSizeX, int imageSizeY) {
+	system("v4l2-ctl --set-ctrl=saturation=200");
+	system("v4l2-ctl --set-ctrl=brightness=10");
+	system("v4l2-ctl --set-ctrl=exposure_auto=1");
+	system("v4l2-ctl --set-ctrl=exposure_absolute=5");
 	//start NetworkTables
   	ntinst = nt::NetworkTableInstance::GetDefault();
 	ntinst.SetUpdateRate(1);
@@ -24,7 +31,7 @@ void TigerVision::InitCamera(int camId) {
 
 void TigerVision::FindTarget() {
 	while(true) {
-		
+		std::chrono::high_resolution_clock::time_point t1 = std::chrono::high_resolution_clock::now();
 		cv::Mat imgOriginal;
 		vidCap >> imgOriginal;
 
@@ -127,6 +134,9 @@ void TigerVision::FindTarget() {
 		}
 		cv::putText(imgResize, "TESTING", cv::Point(50, 50), cv::FONT_HERSHEY_PLAIN, 1, RED);
 		cvsource.PutFrame(imgResize);
+		std::chrono::high_resolution_clock::time_point t2 = std::chrono::high_resolution_clock::now();
+		auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count();
+		std::cout << "Duration: " << duration << "\n";
 	}
 }
 
