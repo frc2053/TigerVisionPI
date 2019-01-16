@@ -11,5 +11,6 @@
 int main(int argc, char* argv[]) {
   TigerVision visionProcessor(320,240);
   visionProcessor.InitCamera(0);
+  visionProcessor.InitCamera2(1);
   visionProcessor.FindTarget();
 }
