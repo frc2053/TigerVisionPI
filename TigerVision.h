@@ -10,7 +10,6 @@ class TigerVision {
 public:
 	TigerVision(int imageSizeX, int imageSizeY);
 	void InitCamera(int camId);
-	void InitCamera2(int camId);
 	void FindTarget();
 	std::vector<std::vector<cv::Point>> FilterContours(const std::vector<std::vector<cv::Point>>& contours);
 	void DrawInfo(const cv::Mat& imageToDrawTo, const TargetInfo& info);
@@ -18,7 +17,6 @@ public:
 	double CalculateAngleBetweenCameraAndPixel(const TargetInfo& info);
 private:
 	cv::VideoCapture vidCap;
-	cv::VideoCapture vidCap2;
 	cv::Size imageSize;
 	cs::MjpegServer mjpegServer = cs::MjpegServer("cvhttpserver", 8083);
 	cs::CvSource cvsource = cs::CvSource("cvsource", cs::VideoMode::kYUYV, 320, 240, 30);

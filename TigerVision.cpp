@@ -28,9 +28,6 @@ TigerVision::TigerVision(int imageSizeX, int imageSizeY) {
 void TigerVision::InitCamera(int camId) {
 	vidCap.open(camId);
 }
-void TigerVision::InitCamera2(int camId) {
-	vidCap2.open(camId);
-}
 
 void TigerVision::FindTarget() {
 	while(true) {
@@ -38,37 +35,14 @@ void TigerVision::FindTarget() {
 		cv::Mat imgOriginal;
 		vidCap >> imgOriginal;
 
-		cv::Mat imgOriginal2;
-		//vidCap2 >> imgOriginal2;
-
 		//resize to reduce processing time
 		cv::Mat imgResize;
 		cv::resize(imgOriginal, imgResize, imageSize);
-
-		cv::Mat imgResize2;
-		//cv::resize(imgOriginal2, imgResize2, imageSize);
 
 		//change color space so we have consistent color ranges
 		cv::Mat imgHSVImage;
 		cv::cvtColor(imgResize, imgHSVImage, cv::COLOR_BGR2HSV);
 
-		cv::Mat imgHSVImage2;
-		//cv::cvtColor(imgResize2, imgHSVImage2, cv::COLOR_BGR2HSV);
-
-		cv::Mat imgGray;
-		cv::Mat imgGray2;
-
-		cv::Mat hsv_channels[3];
-		//cv::Mat hsv_channels2[3];
-
-		cv::split(imgHSVImage, hsv_channels);
-		//cv::split(imgHSVImage2, hsv_channels2);
-
-		imgGray = hsv_channels[2];
-		//imgGray2 = hsv_channels2[2];
-
-		cv::Mat disparity;
-		
 		//checks for HSV values in range
 		cv::Mat imgThreshold;
 		cv::inRange(imgHSVImage, LOWER_BOUNDS, UPPER_BOUNDS, imgThreshold);
@@ -159,8 +133,7 @@ void TigerVision::FindTarget() {
 			DrawInfo(imgResize, targetRect);
 		}
 		cv::putText(imgResize, "TESTING", cv::Point(50, 50), cv::FONT_HERSHEY_PLAIN, 1, RED);
-		//cvsource.PutFrame(imgResize);
-		cvsource.PutFrame(imgGray);
+		cvsource.PutFrame(imgResize);
 		std::chrono::high_resolution_clock::time_point t2 = std::chrono::high_resolution_clock::now();
 		auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count();
 		std::cout << "Duration: " << duration << "\n";
