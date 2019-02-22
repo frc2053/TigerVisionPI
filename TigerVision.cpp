@@ -127,8 +127,8 @@ void TigerVision::FindTarget() {
 			cv::Rect targetRect = cv::minAreaRect(combinedTape).boundingRect();
 			cv::rectangle(imgResize, targetRect, PURPLE);
 			cv::Point targetToSendCenter =  (targetRect.br() + targetRect.tl()) * 0.5;
-			ntinst.GetTable("vision")->PutNumber("X" + std::to_string(j), targetToSendCenter.x);
-			ntinst.GetTable("vision")->PutNumber("Y" + std::to_string(j), targetToSendCenter.y);
+			ntinst.GetTable("vision")->PutNumber("X", targetToSendCenter.x);
+			ntinst.GetTable("vision")->PutNumber("Y", targetToSendCenter.y);
 			ntinst.Flush();
 			DrawInfo(imgResize, targetRect);
 		}

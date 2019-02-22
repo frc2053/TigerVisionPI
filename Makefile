@@ -12,7 +12,7 @@ install: build
 	cp ${EXE} runCamera ${DESTDIR}
 
 clean:
-	rm ${EXE} *.o
+	del ${EXE} *.o
 
 OBJS=TargetInfo.o TigerVision.o main.o
 
