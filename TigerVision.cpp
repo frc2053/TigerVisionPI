@@ -129,6 +129,7 @@ void TigerVision::FindTarget() {
 			cv::Point targetToSendCenter =  (targetRect.br() + targetRect.tl()) * 0.5;
 			ntinst.GetTable("vision")->PutNumber("X", targetToSendCenter.x);
 			ntinst.GetTable("vision")->PutNumber("Y", targetToSendCenter.y);
+			ntinst.GetTable("vision")->PutNumber("Area", targetRect.area());
 			ntinst.Flush();
 			DrawInfo(imgResize, targetRect);
 		}
