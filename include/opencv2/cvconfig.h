@@ -84,19 +84,19 @@
 /* #undef HAVE_GDAL */
 
 /* GStreamer multimedia framework */
-/* #undef HAVE_GSTREAMER */
+#define HAVE_GSTREAMER
 
 /* GTK+ 2.0 Thread support */
-/* #undef HAVE_GTHREAD */
+#define HAVE_GTHREAD
 
 /* GTK+ 2.x toolkit */
-/* #undef HAVE_GTK */
+#define HAVE_GTK
 
 /* Halide support */
 /* #undef HAVE_HALIDE */
 
 /* Define to 1 if you have the <inttypes.h> header file. */
-/* #undef HAVE_INTTYPES_H */
+#define HAVE_INTTYPES_H 1
 
 /* Intel Perceptual Computing SDK library */
 /* #undef HAVE_INTELPERC */
@@ -108,13 +108,13 @@
 /* #undef HAVE_IPP_IW_LL */
 
 /* JPEG-2000 codec */
-/* #undef HAVE_JASPER */
+#define HAVE_JASPER
 
 /* IJG JPEG codec */
 #define HAVE_JPEG
 
 /* libpng/png.h needs to be included */
-/* #undef HAVE_LIBPNG_PNG_H */
+#define HAVE_LIBPNG_PNG_H
 
 /* GDCM DICOM codec */
 /* #undef HAVE_GDCM */
@@ -132,12 +132,12 @@
 /* #undef HAVE_NVCUVENC */
 
 /* OpenCL Support */
-/* #undef HAVE_OPENCL */
+#define HAVE_OPENCL
 /* #undef HAVE_OPENCL_STATIC */
 /* #undef HAVE_OPENCL_SVM */
 
 /* OpenEXR codec */
-/* #undef HAVE_OPENEXR */
+#define HAVE_OPENEXR
 
 /* OpenGL support*/
 /* #undef HAVE_OPENGL */
@@ -173,7 +173,7 @@
 /* #undef HAVE_TBB */
 
 /* TIFF codec */
-/* #undef HAVE_TIFF */
+#define HAVE_TIFF
 
 /* Unicap video capture library */
 /* #undef HAVE_UNICAP */
@@ -210,7 +210,7 @@
 /* #undef HAVE_MFX */
 
 /* Lapack */
-/* #undef HAVE_LAPACK */
+#define HAVE_LAPACK
 
 /* Library was compiled with functions instrumentation */
 /* #undef ENABLE_INSTRUMENTATION */
