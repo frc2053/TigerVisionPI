@@ -16,7 +16,7 @@ public:
 	void DrawInfo(const cv::Mat& imageToDrawTo, const cv::Rect& rect);
 	double CalculateAngleBetweenCameraAndPixel(const TargetInfo& info);
 private:
-	cv::VideoCapture vidCap;
+	cs::CvSink cvSink;
 	cv::Size imageSize;
 	cs::MjpegServer mjpegServer = cs::MjpegServer("cvhttpserver", 8083);
 	cs::CvSource cvsource = cs::CvSource("cvsource", cs::VideoMode::kYUYV, 320, 240, 30);

@@ -26,14 +26,15 @@ TigerVision::TigerVision(int imageSizeX, int imageSizeY) {
 }
 
 void TigerVision::InitCamera(int camId) {
-	vidCap.open(camId);
+	frc::CameraServer::GetInstance()->StartAutomaticCapture(camId);
+	cvSink = frc::CameraServer::GetInstance()->GetVideo();
 }
 
 void TigerVision::FindTarget() {
 	while(true) {
 		std::chrono::high_resolution_clock::time_point t1 = std::chrono::high_resolution_clock::now();
 		cv::Mat imgOriginal;
-		vidCap >> imgOriginal;
+		cvSink.GrabFrame(imgOriginal);
 
 		//resize to reduce processing time
 		cv::Mat imgResize;

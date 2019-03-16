@@ -12,9 +12,9 @@ install: build
 	cp ${EXE} runCamera ${DESTDIR}
 
 clean:
-	del ${EXE} *.o
+	rm ${EXE} *.o
 
-OBJS=TargetInfo.o TigerVision.o main.o
+OBJS=main.o TargetInfo.o TigerVision.o
 
 ${EXE}: ${OBJS}
 	${CXX} -pthread -g -o $@ $^ ${DEPS_LIBS} -Wl,--unresolved-symbols=ignore-in-shared-libs
