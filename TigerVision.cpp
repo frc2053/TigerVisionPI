@@ -27,11 +27,11 @@ TigerVision::TigerVision(int imageSizeX, int imageSizeY) {
 
 void TigerVision::InitCamera(int camId) {
 	frc::CameraServer::GetInstance()->StartAutomaticCapture(camId);
-	cvSink = frc::CameraServer::GetInstance()->GetVideo();
 }
 
 void TigerVision::FindTarget() {
 	while(true) {
+		cvSink = frc::CameraServer::GetInstance()->GetVideo();
 		std::chrono::high_resolution_clock::time_point t1 = std::chrono::high_resolution_clock::now();
 		cv::Mat imgOriginal;
 		cvSink.GrabFrame(imgOriginal);
